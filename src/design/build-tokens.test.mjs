@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { contrast, build, resolve, flatten, merge, toCss, cssVar, colorHex, lintRawColours } from './build-tokens.mjs';
+import { contrast, build, resolve, flatten, merge, toCss, cssVar, colorHex, lintRawColours, lintFontSizes } from './build-tokens.mjs';
 
 const col = (hex) => ({ $type: 'color', $value: { colorSpace: 'srgb', components: [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255), hex } });
 const pair = (ref, on, min) => ({ $type: 'color', $value: `{${ref}}`, $extensions: { 'io.github.pj-25': { contrast: { on, min } } } });
@@ -68,4 +68,33 @@ test('raw-colour lint finds literals in CSS and Astro style contexts only', () =
   assert.equal(found.length, 2);
   assert.ok(found.some((f) => f.endsWith('a.css: #fff')));
   assert.ok(found.some((f) => f.endsWith('b.astro: rgb(')));
+});
+
+test('fontWeight and number serialise; a bad weight is rejected', () => {
+  assert.equal(toCss('fontWeight', 600), '600');
+  assert.equal(toCss('number', 1.65), '1.65');
+  assert.throws(() => toCss('fontWeight', 'bold'), /fontWeight must be a number/);
+  assert.equal(cssVar('font.lineHeight.body'), '--pj-font-line-height-body');
+});
+
+test('working-surface switch remaps the display family to the text family (SPEC-004 R5)', () => {
+  const ff = (v) => ({ $type: 'fontFamily', $value: v });
+  const { css } = build({ font: { family: { display: ff(['Source Serif 4', 'serif']), text: ff(['system-ui']) } } });
+  assert.match(css, /--pj-font-family-display: "Source Serif 4", serif;/);
+  assert.match(css, /\[data-surface="working"\] \{\n  --pj-font-family-display: var\(--pj-font-family-text\);\n\}/);
+  assert.doesNotMatch(build({ font: { family: { text: ff(['system-ui']) } } }).css, /data-surface/);
+});
+
+test('font-size lint flags literal sizes in CSS, Astro style blocks and the font shorthand; allows tokens', () => {
+  const d = mkdtempSync(join(tmpdir(), 'pj-fs-')); mkdirSync(join(d, 'x'));
+  writeFileSync(join(d, 'a.css'), 'a{font-size:1rem}b{font-size:var(--pj-font-size-body)}c{font:17px/1.65 var(--pj-font-family-text)}d{font-size:inherit;line-height:1.2;font-family:x}e{font-size: .8em}');
+  writeFileSync(join(d, 'x', 'b.astro'), '<p style="font-size:12px">y</p><style>.q{font-size:large}.r{font-size:var(--pj-font-size-meta)}</style><div class="font-size:9px"></div>');
+  writeFileSync(join(d, 'gen.css'), ':root{--pj-font-size-body:1.0625rem}');
+  const found = lintFontSizes(d, join(d, 'gen.css'));
+  assert.equal(found.length, 5, found.join('\n'));
+  assert.ok(found.some((f) => f.endsWith('a.css: font-size: 1rem')));
+  assert.ok(found.some((f) => f.endsWith('a.css: font: 17px/1.65 var(--pj-font-family-text)')));
+  assert.ok(found.some((f) => f.endsWith('b.astro: font-size: 12px')));
+  assert.ok(found.some((f) => f.endsWith('b.astro: font-size: large')));
+  assert.ok(!found.some((f) => f.includes('var(--pj-font-size')));
 });

@@ -1,7 +1,7 @@
-// Design tokens → CSS custom properties, with WCAG contrast and raw-colour lint (SPEC-001).
+// Design tokens → CSS custom properties, with WCAG contrast, raw-colour lint (SPEC-001) and font-size lint (SPEC-004).
 // Source: DTCG 2025.10 JSON in ./tokens. Node built-ins only.
 // Usage: node src/design/build-tokens.mjs           write tokens.css (fails on errors)
-//        node src/design/build-tokens.mjs --check   fail if tokens.css is stale, a contrast pair fails, or src/ has raw colours
+//        node src/design/build-tokens.mjs --check   fail if tokens.css is stale, a contrast pair fails, or src/ has raw colours or literal font sizes
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -60,6 +60,7 @@ export function toCss(type, value) {
     case 'fontFamily': return (Array.isArray(value) ? value : [value]).map((f) => (/\s/.test(f) ? `"${f}"` : f)).join(', ');
     case 'cubicBezier': return `cubic-bezier(${value.join(', ')})`;
     case 'number': return String(value);
+    case 'fontWeight': if (typeof value !== 'number' || value < 1 || value > 1000) throw new Error(`fontWeight must be a number 1-1000, got ${JSON.stringify(value)}`); return String(value);
     default: throw new Error(`Unsupported $type ${type}`);
   }
 }
@@ -114,6 +115,9 @@ export function build(baseTree, themes = {}) {
     css += `@media (prefers-color-scheme: ${theme}) {\n  :root:not([data-theme="light"]) {\n${body.replace(/^/gm, '  ')}\n  }\n}\n`;
     css += `:root[data-theme="${theme}"] {\n${body}\n}\n`;
   }
+  // IDN-5: working surfaces (workbench) use no serif; the display role falls back to the text family.
+  if (light.has('font.family.display') && light.has('font.family.text'))
+    css += `[data-surface="working"] {\n  ${cssVar('font.family.display')}: var(${cssVar('font.family.text')});\n}\n`;
   if (motion.length) css += `@media (prefers-reduced-motion: reduce) {\n  :root {\n${motion.map((p) => `    ${cssVar(p)}: 0ms;`).join('\n')}\n  }\n}\n`;
   return { css, errors, checks };
 }
@@ -133,6 +137,24 @@ export function lintRawColours(srcDir, generated) {
   return found;
 }
 
+/** ENG-2 / SPEC-004 R4: font sizes come from --pj-font-size-* role tokens. Flags literal lengths in `font-size` and in the `font` shorthand. */
+export function lintFontSizes(srcDir, generated) {
+  const walk = (d) => readdirSync(d).flatMap((f) => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
+  const LEN = /(?<![\w-])\d*\.?\d+(?:px|rem|em|pt|%|ex|ch|vw|vh)\b|(?<![\w-])(?:xx?-small|x{1,2}-large|xxx-large|small|medium|large|larger|smaller)\b/;
+  const decl = /(?:^|[;{\s])(font-size|font)\s*:\s*([^;}"]*)/g;
+  const found = [];
+  for (const f of walk(srcDir)) {
+    if (f === generated || !/\.(css|astro)$/.test(f)) continue;
+    const text = readFileSync(f, 'utf8');
+    const css = f.endsWith('.css') ? [text] : [...text.matchAll(/<style[^>]*>([\s\S]*?)<\/style>|style="([^"]*)"/g)].map((m) => m[1] ?? m[2]);
+    for (const chunk of css) for (const m of chunk.matchAll(decl)) {
+      const value = m[2].replace(/var\([^)]*\)/g, ''); // tokens are fine; look at what is left
+      if (LEN.test(value)) found.push(`${relative(process.cwd(), f)}: ${m[1]}: ${m[2].trim()}`);
+    }
+  }
+  return found;
+}
+
 function main() {
   const check = process.argv.includes('--check');
   const read = (n) => JSON.parse(readFileSync(join(HERE, 'tokens', n), 'utf8'));
@@ -140,11 +162,12 @@ function main() {
   const out = join(HERE, 'tokens.css');
   const lint = lintRawColours(join(HERE, '..'), out);
   for (const c of checks) console.log(`${c.ok ? 'ok  ' : 'FAIL'} ${c.theme.padEnd(5)} ${c.fg} on ${c.bg}: ${c.ratio} (min ${c.min})`);
-  const problems = [...errors, ...lint.map((l) => `raw colour (ENG-2): ${l}`)];
+  const sizes = lintFontSizes(join(HERE, '..'), out);
+  const problems = [...errors, ...lint.map((l) => `raw colour (ENG-2): ${l}`), ...sizes.map((l) => `literal font size (use --pj-font-size-*): ${l}`)];
   if (check && (!existsSync(out) || readFileSync(out, 'utf8') !== css)) problems.push('tokens.css is stale: run `npm run tokens`');
   if (problems.length) { console.error(problems.map((p) => `✗ ${p}`).join('\n')); process.exit(1); }
   if (!check) writeFileSync(out, css);
-  console.log(check ? '✓ tokens: up to date, contrast ok, no raw colours' : `✓ wrote ${relative(process.cwd(), out)}`);
+  console.log(check ? '✓ tokens: up to date, contrast ok, no raw colours, no literal font sizes' : `✓ wrote ${relative(process.cwd(), out)}`);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) main();

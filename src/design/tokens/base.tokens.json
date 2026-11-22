@@ -379,6 +379,16 @@
   },
   "font": {
     "family": {
+      "display": {
+        "$type": "fontFamily",
+        "$value": [
+          "Source Serif 4",
+          "Source Serif 4 Fallback",
+          "Georgia",
+          "serif"
+        ],
+        "$description": "Headings on reading surfaces (VIS-3, IDN-5). The Fallback face is metric-matched to Georgia Bold (see fonts.css) so the swap does not shift layout. Working surfaces remap this to family.text via [data-surface=\"working\"]."
+      },
       "text": {
         "$type": "fontFamily",
         "$value": [
@@ -388,7 +398,7 @@
           "Roboto",
           "sans-serif"
         ],
-        "$description": "System stack in v0; typeface decided in Phase 2 (Q-2)"
+        "$description": "System stack: body and UI (VIS-3)"
       },
       "mono": {
         "$type": "fontFamily",
@@ -399,6 +409,77 @@
           "monospace"
         ],
         "$description": "The annotation voice (IDN-6)"
+      }
+    },
+    "size": {
+      "$description": "Ratio-1.2 scale on a 17px body (D-9, VIS-3); sizes in rem so user font settings are respected",
+      "meta": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.78,
+          "unit": "rem"
+        },
+        "$description": "Annotations: mono dates, versions, evidence marks"
+      },
+      "small": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.88,
+          "unit": "rem"
+        },
+        "$description": "Nav, links, tables, footer"
+      },
+      "body": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.0625,
+          "unit": "rem"
+        },
+        "$description": "17px at the default root size"
+      },
+      "lede": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.2,
+          "unit": "rem"
+        }
+      },
+      "h3": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.2,
+          "unit": "rem"
+        }
+      },
+      "h2": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.44,
+          "unit": "rem"
+        }
+      },
+      "h1": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2.1,
+          "unit": "rem"
+        }
+      }
+    },
+    "weight": {
+      "heading": {
+        "$type": "fontWeight",
+        "$value": 600
+      }
+    },
+    "lineHeight": {
+      "body": {
+        "$type": "number",
+        "$value": 1.65
+      },
+      "heading": {
+        "$type": "number",
+        "$value": 1.2
       }
     }
   },
