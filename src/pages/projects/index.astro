@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import projects from '../../data/projects.json';
+---
+<Base title="Projects" description="Curated projects, with case studies where the work warrants one.">
+  <h1>Projects</h1>
+  <p class="lede">A few projects, chosen for depth. Older experiments stay on <a href="https://github.com/pj-25?tab=repositories">GitHub</a> as archived history.</p>
+  <div class="cards">
+    {projects.map(p => (
+      <article class="card"><span class="meta">{p.year}</span><h3><a href={p.href}>{p.name}</a></h3><p>{p.summary}</p></article>
+    ))}
+  </div>
+</Base>

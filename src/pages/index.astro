@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import projects from '../data/projects.json';
+---
+<Base>
+  <p class="eyebrow">Full-stack product engineer · independent builder</p>
+  <h1>I build products end to end, and the tools I want to build them with.</h1>
+  <p class="lede">Senior Software Engineer at Vinyl Equity, working on a greenfield investment platform. Before that came years of building for curiosity: C games, a Java networking library, AI-assisted 3D. Now: harnesses for coding agents.</p>
+  <h2>Selected work</h2>
+  <div class="cards">
+    {projects.filter(p => p.featured).map(p => (
+      <article class="card">
+        <span class="meta">{p.year}</span>
+        <h3><a href={p.href}>{p.name}</a></h3>
+        <p>{p.summary}</p>
+        {p.shows && <p class="meta">Shows: {p.shows}</p>}
+        {p.live && <p class="links"><a href={p.live}>Live demo</a></p>}
+      </article>
+    ))}
+  </div>
+  <h2>Elsewhere</h2>
+  <p class="links"><a href="/journey/">The journey since 2019</a><a href="/now/">What I'm exploring now</a><a href="https://github.com/pj-25">GitHub</a></p>
+</Base>

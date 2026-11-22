@@ -1,0 +1,19 @@
+:root{--bg:#fbfaf7;--fg:#1d1d1f;--muted:#5f6368;--line:#e3e0d8;--accent:#0b6e6e;--card:#ffffff;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#121314;--fg:#ececec;--muted:#a0a4a8;--line:#2a2c2e;--accent:#4fc1c1;--card:#18191b}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}
+.wrap{max-width:46rem;margin:0 auto;padding:0 16px}
+header.site{border-bottom:1px solid var(--line)}header.site .wrap{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;align-items:baseline;padding-top:1rem;padding-bottom:1rem}
+header.site .brand{font-family:var(--mono);font-weight:600;color:var(--fg);text-decoration:none;margin-right:auto}
+nav a{color:var(--muted);text-decoration:none;font-size:.95rem}nav a[aria-current=page]{color:var(--fg)}
+main{padding:2.5rem 0 4rem}h1{font-size:2rem;line-height:1.2;margin:.2em 0 .6em}h2{font-size:1.25rem;margin:2.2em 0 .6em}
+.lede{font-size:1.15rem;color:var(--muted)}.eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.cards{display:grid;gap:1rem}.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem}
+.card h3{margin:.1em 0 .3em;font-size:1.05rem}.card p{margin:.3em 0}.meta{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+ol.timeline{list-style:none;padding:0;margin:0;border-left:2px solid var(--line)}
+ol.timeline li{position:relative;padding:0 0 1.6rem 1.25rem}ol.timeline li::before{content:"";position:absolute;left:-7px;top:.55em;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:.25rem .9rem;font-size:.92rem}
+table{border-collapse:collapse;width:100%;font-size:.93rem;display:block;overflow-x:auto}th,td{border-bottom:1px solid var(--line);padding:.45rem .5rem;text-align:left;vertical-align:top}
+code{font-family:var(--mono);font-size:.88em}footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;padding:1.5rem 0}

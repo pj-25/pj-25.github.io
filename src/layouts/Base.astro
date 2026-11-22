@@ -1,0 +1,25 @@
+---
+import '../styles/global.css';
+const { title, description = 'Prashant Joshi: full-stack product engineer and independent builder.', frontmatter } = Astro.props;
+const t = title ?? frontmatter?.title; const d = frontmatter?.description ?? description;
+const path = Astro.url.pathname;
+const nav = [['/journey/','Journey'],['/projects/','Projects'],['/experience/','Experience'],['/now/','Now'],['/contact/','Contact']];
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{t ? `${t} · Prashant Joshi` : 'Prashant Joshi'}</title>
+  <meta name="description" content={d} />
+  <link rel="canonical" href={new URL(path, Astro.site)} />
+  <meta property="og:title" content={t ?? 'Prashant Joshi'} /><meta property="og:description" content={d} />
+</head>
+<body>
+  <header class="site"><div class="wrap">
+    <a class="brand" href="/">prashant joshi</a>
+    <nav aria-label="Main">{nav.map(([h,l]) => <a href={h} aria-current={path.startsWith(h) ? 'page' : undefined}>{l}</a>)}</nav>
+  </div></header>
+  <main><div class="wrap"><slot /></div></main>
+  <footer class="site"><div class="wrap">Built from real repositories and their history. <a href="https://github.com/pj-25">github.com/pj-25</a></div></footer>
+</body>
+</html>
