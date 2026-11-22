@@ -73,6 +73,10 @@
     "detail": "A personal agentic OS on Claude Code (guard and trace hooks, a bounded DAG runner) and The Odyssey Voyage (8k lines of TypeScript, tested).",
     "links": [
       {
+        "label": "Agentic OS case study",
+        "href": "/projects/agentic-os/"
+      },
+      {
         "label": "The Odyssey Voyage",
         "href": "https://github.com/pj-25/the-odyssey-experience"
       },

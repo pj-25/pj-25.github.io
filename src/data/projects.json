@@ -1,5 +1,14 @@
 [
   {
+    "slug": "agentic-os",
+    "name": "Personal Agentic OS",
+    "year": "2026",
+    "summary": "A harness for coding agents on one laptop: guard and trace hooks, a bounded DAG runner with typed failures and resume, and verification agents. Built on Claude Code.",
+    "shows": "Systems design for AI-native engineering; safety and observability; 36 tests.",
+    "href": "/projects/agentic-os/",
+    "featured": true
+  },
+  {
     "slug": "jsc-gameholic",
     "name": "JavaServerClientAPI → Gameholic",
     "year": "2021",
