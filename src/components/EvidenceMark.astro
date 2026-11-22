@@ -13,7 +13,7 @@ const m = evidenceModel({ kind, href, label });
   {m.kind === 'verified' ? <a href={m.href} rel="noopener">{m.text}</a> : <span>{m.text}</span>}
 </span>
 <style>
-  .evidence { display: inline-flex; align-items: center; gap: var(--pj-space-1); font-family: var(--pj-font-family-mono); font-size: .8rem; line-height: inherit; vertical-align: baseline; }
+  .evidence { display: inline-flex; align-items: center; gap: var(--pj-space-1); font-family: var(--pj-font-family-mono); font-size: var(--pj-font-size-meta); line-height: inherit; vertical-align: baseline; }
   .evidence-shape { flex: none; }
   .evidence a { color: inherit; text-underline-offset: 3px; }
   .evidence--verified { color: var(--pj-color-evidence-verified); }

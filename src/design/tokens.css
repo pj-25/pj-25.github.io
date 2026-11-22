@@ -14,8 +14,19 @@
   --pj-color-evidence-verified: #3b6a47;
   --pj-color-evidence-in-progress: #3f5f8c;
   --pj-color-evidence-described: #5f6368;
+  --pj-font-family-display: "Source Serif 4", "Source Serif 4 Fallback", Georgia, serif;
   --pj-font-family-text: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --pj-font-family-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --pj-font-size-meta: 0.78rem;
+  --pj-font-size-small: 0.88rem;
+  --pj-font-size-body: 1.0625rem;
+  --pj-font-size-lede: 1.2rem;
+  --pj-font-size-h3: 1.2rem;
+  --pj-font-size-h2: 1.44rem;
+  --pj-font-size-h1: 2.1rem;
+  --pj-font-weight-heading: 600;
+  --pj-font-line-height-body: 1.65;
+  --pj-font-line-height-heading: 1.2;
   --pj-space-1: 0.25rem;
   --pj-space-2: 0.5rem;
   --pj-space-3: 0.75rem;
@@ -73,6 +84,9 @@
   --pj-color-evidence-verified: #8cc09a;
   --pj-color-evidence-in-progress: #9db8e0;
   --pj-color-evidence-described: #a0a4a8;
+}
+[data-surface="working"] {
+  --pj-font-family-display: var(--pj-font-family-text);
 }
 @media (prefers-reduced-motion: reduce) {
   :root {

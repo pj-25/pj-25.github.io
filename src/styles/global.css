@@ -1,7 +1,7 @@
-/* Site styles. Values come from design tokens (src/design/tokens.css, generated). Intent: SPEC-001.
-   Type sizes are still literal: they become role tokens with the Phase-2 type scale. */
+/* Site styles. Values come from design tokens (src/design/tokens.css, generated). Intent: SPEC-001, SPEC-004.
+   Type sizes are --pj-font-size-* role tokens (ratio 1.2); headings use the display (serif) family. */
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--pj-color-surface-page);color:var(--pj-color-text-default);font:17px/1.65 var(--pj-font-family-text)}
+body{margin:0;background:var(--pj-color-surface-page);color:var(--pj-color-text-default);font-family:var(--pj-font-family-text);font-size:var(--pj-font-size-body);line-height:var(--pj-font-line-height-body)}
 a{color:var(--pj-color-accent-default);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}
 :focus-visible{outline:var(--pj-size-focus-width) solid var(--pj-color-focus-ring);outline-offset:var(--pj-size-focus-offset)}
 [tabindex="-1"]:focus{outline:none}
@@ -10,17 +10,18 @@ a{color:var(--pj-color-accent-default);text-underline-offset:3px}a:hover{text-de
 .wrap{max-width:var(--pj-size-measure);margin:0 auto;padding:0 var(--pj-size-gutter)}
 header.site{border-bottom:1px solid var(--pj-color-border-default)}header.site .wrap{display:flex;flex-wrap:wrap;gap:var(--pj-space-1) var(--pj-space-5);align-items:baseline;padding-top:var(--pj-space-4);padding-bottom:var(--pj-space-4)}
 header.site .brand{font-family:var(--pj-font-family-mono);font-weight:600;color:var(--pj-color-text-default);text-decoration:none;margin-right:auto}
-nav{display:flex;flex-wrap:wrap;gap:var(--pj-space-1) var(--pj-space-4)}nav a{color:var(--pj-color-text-muted);text-decoration:none;font-size:.95rem}nav a[aria-current=page]{color:var(--pj-color-text-default)}
-main{padding:var(--pj-space-10) 0 var(--pj-space-16)}h1{font-size:2rem;line-height:1.2;margin:.2em 0 .6em}h2{font-size:1.25rem;margin:2.2em 0 .6em}
-.lede{font-size:1.15rem;color:var(--pj-color-text-muted)}.eyebrow{font-family:var(--pj-font-family-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--pj-color-accent-default)}
+nav{display:flex;flex-wrap:wrap;gap:var(--pj-space-1) var(--pj-space-4)}nav a{color:var(--pj-color-text-muted);text-decoration:none;font-size:var(--pj-font-size-small)}nav a[aria-current=page]{color:var(--pj-color-text-default)}
+main{padding:var(--pj-space-10) 0 var(--pj-space-16)}h1,h2,h3,.card-title,.entry-title{font-family:var(--pj-font-family-display);font-weight:var(--pj-font-weight-heading);line-height:var(--pj-font-line-height-heading)}
+h1{font-size:var(--pj-font-size-h1);margin:.2em 0 .6em}h2{font-size:var(--pj-font-size-h2);margin:2.2em 0 .6em}h3{font-size:var(--pj-font-size-h3)}
+.lede{font-size:var(--pj-font-size-lede);color:var(--pj-color-text-muted)}.eyebrow{font-family:var(--pj-font-family-mono);font-size:var(--pj-font-size-meta);letter-spacing:.06em;text-transform:uppercase;color:var(--pj-color-accent-default)}
 .cards{display:grid;gap:var(--pj-space-4)}.card{background:var(--pj-color-surface-raised);border:1px solid var(--pj-color-border-default);border-radius:var(--pj-radius-card);padding:var(--pj-space-4) 1.1rem}
-.card h3,.card .card-title{margin:.1em 0 .3em;font-size:1.05rem}.card p{margin:.3em 0}.meta{font-family:var(--pj-font-family-mono);font-size:.8rem;color:var(--pj-color-text-muted)}
+.card h3,.card .card-title{margin:.1em 0 .3em;font-size:var(--pj-font-size-h3)}.card p{margin:.3em 0}.meta{font-family:var(--pj-font-family-mono);font-size:var(--pj-font-size-meta);color:var(--pj-color-text-muted)}
 ol.timeline{list-style:none;padding:0;margin:0;border-left:2px solid var(--pj-color-border-default)}
 ol.timeline li{position:relative;padding:0 0 1.6rem var(--pj-space-5)}ol.timeline li::before{content:"";position:absolute;left:-7px;top:.55em;width:12px;height:12px;border-radius:50%;background:var(--pj-color-surface-page);border:2px solid var(--pj-color-accent-default)}
-.timeline .entry-title{margin:.15em 0 .2em;font-size:1.17em}.timeline .entry-detail{margin:.2em 0 .4em}
-.links{display:flex;flex-wrap:wrap;gap:var(--pj-space-1) .9rem;font-size:.92rem}
-table{border-collapse:collapse;width:100%;font-size:.93rem;display:block;overflow-x:auto}th,td{border-bottom:1px solid var(--pj-color-border-default);padding:.45rem var(--pj-space-2);text-align:left;vertical-align:top}
-code{font-family:var(--pj-font-family-mono);font-size:.88em}footer.site{border-top:1px solid var(--pj-color-border-default);color:var(--pj-color-text-muted);font-size:.85rem;padding:var(--pj-space-6) 0}
+.timeline .entry-title{margin:.15em 0 .2em;font-size:var(--pj-font-size-h3)}.timeline .entry-detail{margin:.2em 0 .4em}
+.links{display:flex;flex-wrap:wrap;gap:var(--pj-space-1) .9rem;font-size:var(--pj-font-size-small)}
+table{border-collapse:collapse;width:100%;font-size:var(--pj-font-size-small);display:block;overflow-x:auto}th,td{border-bottom:1px solid var(--pj-color-border-default);padding:.45rem var(--pj-space-2);text-align:left;vertical-align:top}
+code{font-family:var(--pj-font-family-mono);font-size:var(--pj-font-size-small)}footer.site{border-top:1px solid var(--pj-color-border-default);color:var(--pj-color-text-muted);font-size:var(--pj-font-size-small);padding:var(--pj-space-6) 0}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 /* Narrow screens: the journey's evidence mark takes its own line on every entry (consistent edges, no orphaned separator). */
 @media (max-width:30rem){.timeline .meta-sep{display:none}.timeline .meta .evidence{display:flex;margin-top:.1em}}
