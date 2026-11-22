@@ -22,3 +22,5 @@ ol.timeline li{position:relative;padding:0 0 1.6rem var(--pj-space-5)}ol.timelin
 table{border-collapse:collapse;width:100%;font-size:.93rem;display:block;overflow-x:auto}th,td{border-bottom:1px solid var(--pj-color-border-default);padding:.45rem var(--pj-space-2);text-align:left;vertical-align:top}
 code{font-family:var(--pj-font-family-mono);font-size:.88em}footer.site{border-top:1px solid var(--pj-color-border-default);color:var(--pj-color-text-muted);font-size:.85rem;padding:var(--pj-space-6) 0}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+/* Narrow screens: the journey's evidence mark takes its own line on every entry (consistent edges, no orphaned separator). */
+@media (max-width:30rem){.timeline .meta-sep{display:none}.timeline .meta .evidence{display:flex;margin-top:.1em}}

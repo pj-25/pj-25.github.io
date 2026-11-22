@@ -9,7 +9,7 @@ import EvidenceMark from '../components/EvidenceMark.astro';
   <ol class="timeline">
     {journey.map(j => (
       <li>
-        <span class="meta">{j.year} · {j.chapter} · <EvidenceMark {...j.evidence} /></span>
+        <span class="meta">{j.year} · {j.chapter}<span class="meta-sep"> · </span><EvidenceMark {...j.evidence} /></span>
         <h2 class="entry-title">{j.title}</h2>
         <p class="entry-detail">{j.detail}</p>
         {j.links.length > 0 && <p class="links">{j.links.map(l => <a href={l.href}>{l.label}</a>)}</p>}
