@@ -9,7 +9,7 @@
     "tokens": "node src/design/build-tokens.mjs",
     "check": "node src/design/build-tokens.mjs --check",
     "prebuild": "node src/design/build-tokens.mjs --check",
-    "test": "node --test src/design/",
+    "test": "node --test src/design/build-tokens.test.mjs",
     "verify:ui": "node scripts/verify-ui.mjs"
   },
   "dependencies": {
