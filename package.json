@@ -2,6 +2,21 @@
   "name": "pj-25-site",
   "private": true,
   "type": "module",
-  "scripts": { "dev": "astro dev", "build": "astro build", "preview": "astro preview" },
-  "dependencies": { "astro": "7.4.11" }
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "tokens": "node src/design/build-tokens.mjs",
+    "check": "node src/design/build-tokens.mjs --check",
+    "prebuild": "node src/design/build-tokens.mjs --check",
+    "test": "node --test src/design/",
+    "verify:ui": "node scripts/verify-ui.mjs"
+  },
+  "dependencies": {
+    "astro": "7.4.11"
+  },
+  "devDependencies": {
+    "axe-core": "4.10.2",
+    "playwright-core": "1.50.1"
+  }
 }

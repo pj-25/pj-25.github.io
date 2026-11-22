@@ -9,8 +9,8 @@ import journey from '../data/journey.json';
     {journey.map(j => (
       <li>
         <span class="meta">{j.year} · {j.chapter}</span>
-        <h3 style="margin:.15em 0 .2em">{j.title}</h3>
-        <p style="margin:.2em 0 .4em">{j.detail}</p>
+        <h3 class="entry-title">{j.title}</h3>
+        <p class="entry-detail">{j.detail}</p>
         {j.links.length > 0 && <p class="links">{j.links.map(l => <a href={l.href}>{l.label}</a>)}</p>}
       </li>
     ))}

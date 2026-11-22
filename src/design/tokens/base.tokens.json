@@ -1,0 +1,457 @@
+{
+  "$description": "pj design foundations v0 (SPEC-001). Source of truth for tokens.css. Intent: agentic-os/initiatives/design-system/design-intent.",
+  "ref": {
+    "$description": "Reference tier: raw values. Never consumed directly by components (TOK-2); not emitted to CSS.",
+    "color": {
+      "paper": {
+        "0": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              1,
+              1
+            ],
+            "hex": "#ffffff"
+          }
+        },
+        "50": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9843,
+              0.9804,
+              0.9686
+            ],
+            "hex": "#fbfaf7"
+          }
+        }
+      },
+      "rule": {
+        "200": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8902,
+              0.8784,
+              0.8471
+            ],
+            "hex": "#e3e0d8"
+          }
+        }
+      },
+      "ink": {
+        "600": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3725,
+              0.3882,
+              0.4078
+            ],
+            "hex": "#5f6368"
+          }
+        },
+        "900": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1137,
+              0.1137,
+              0.1216
+            ],
+            "hex": "#1d1d1f"
+          }
+        }
+      },
+      "teal": {
+        "300": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3098,
+              0.7569,
+              0.7569
+            ],
+            "hex": "#4fc1c1"
+          }
+        },
+        "700": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0431,
+              0.4314,
+              0.4314
+            ],
+            "hex": "#0b6e6e"
+          }
+        }
+      },
+      "charcoal": {
+        "800": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1647,
+              0.1725,
+              0.1804
+            ],
+            "hex": "#2a2c2e"
+          }
+        },
+        "900": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0941,
+              0.098,
+              0.1059
+            ],
+            "hex": "#18191b"
+          }
+        },
+        "950": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0706,
+              0.0745,
+              0.0784
+            ],
+            "hex": "#121314"
+          }
+        }
+      },
+      "mist": {
+        "100": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9255,
+              0.9255,
+              0.9255
+            ],
+            "hex": "#ececec"
+          }
+        },
+        "400": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6275,
+              0.6431,
+              0.6588
+            ],
+            "hex": "#a0a4a8"
+          }
+        }
+      }
+    }
+  },
+  "color": {
+    "surface": {
+      "page": {
+        "$type": "color",
+        "$value": "{ref.color.paper.50}",
+        "$description": "Page background: paper"
+      },
+      "raised": {
+        "$type": "color",
+        "$value": "{ref.color.paper.0}",
+        "$description": "Cards and raised regions"
+      }
+    },
+    "text": {
+      "default": {
+        "$type": "color",
+        "$value": "{ref.color.ink.900}",
+        "$description": "Body ink",
+        "$extensions": {
+          "io.github.pj-25": {
+            "contrast": {
+              "on": [
+                "color.surface.page",
+                "color.surface.raised"
+              ],
+              "min": 4.5
+            }
+          }
+        }
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "{ref.color.ink.600}",
+        "$description": "Secondary text, metadata",
+        "$extensions": {
+          "io.github.pj-25": {
+            "contrast": {
+              "on": [
+                "color.surface.page",
+                "color.surface.raised"
+              ],
+              "min": 4.5
+            }
+          }
+        }
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "{ref.color.rule.200}",
+        "$description": "Hairline separators. Decorative, not a UI-component boundary, so no 3:1 pair (SPEC-001 gap-check 2)"
+      }
+    },
+    "accent": {
+      "default": {
+        "$type": "color",
+        "$value": "{ref.color.teal.700}",
+        "$description": "Identity accent; also link text",
+        "$extensions": {
+          "io.github.pj-25": {
+            "contrast": {
+              "on": [
+                "color.surface.page",
+                "color.surface.raised"
+              ],
+              "min": 4.5
+            }
+          }
+        }
+      }
+    },
+    "focus": {
+      "ring": {
+        "$type": "color",
+        "$value": "{color.accent.default}",
+        "$description": "Focus ring (A11Y-2)",
+        "$extensions": {
+          "io.github.pj-25": {
+            "contrast": {
+              "on": [
+                "color.surface.page",
+                "color.surface.raised"
+              ],
+              "min": 3
+            }
+          }
+        }
+      }
+    }
+  },
+  "font": {
+    "family": {
+      "text": {
+        "$type": "fontFamily",
+        "$value": [
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "sans-serif"
+        ],
+        "$description": "System stack in v0; typeface decided in Phase 2 (Q-2)"
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": [
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "monospace"
+        ],
+        "$description": "The annotation voice (IDN-6)"
+      }
+    }
+  },
+  "space": {
+    "1": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.25,
+        "unit": "rem"
+      }
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.5,
+        "unit": "rem"
+      }
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.75,
+        "unit": "rem"
+      }
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      }
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.25,
+        "unit": "rem"
+      }
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      }
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "rem"
+      }
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2.5,
+        "unit": "rem"
+      }
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": {
+        "value": 3,
+        "unit": "rem"
+      }
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "rem"
+      }
+    },
+    "$description": "4px rhythm (VIS-4), in rem so user font scaling is respected"
+  },
+  "radius": {
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      }
+    },
+    "card": {
+      "$type": "dimension",
+      "$value": {
+        "value": 10,
+        "unit": "px"
+      },
+      "$description": "Live-site card radius kept for v0; converge to md or lg in Phase 2"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      }
+    }
+  },
+  "size": {
+    "measure": {
+      "$type": "dimension",
+      "$value": {
+        "value": 46,
+        "unit": "rem"
+      }
+    },
+    "gutter": {
+      "$type": "dimension",
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      }
+    },
+    "focus-width": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      }
+    },
+    "focus-offset": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      }
+    },
+    "target-min": {
+      "$type": "dimension",
+      "$value": {
+        "value": 24,
+        "unit": "px"
+      }
+    }
+  },
+  "motion": {
+    "duration": {
+      "fast": {
+        "$type": "duration",
+        "$value": {
+          "value": 120,
+          "unit": "ms"
+        }
+      },
+      "base": {
+        "$type": "duration",
+        "$value": {
+          "value": 200,
+          "unit": "ms"
+        }
+      },
+      "slow": {
+        "$type": "duration",
+        "$value": {
+          "value": 300,
+          "unit": "ms"
+        }
+      }
+    },
+    "easing": {
+      "standard": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.2,
+          0,
+          0,
+          1
+        ]
+      }
+    }
+  }
+}
