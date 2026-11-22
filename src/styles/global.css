@@ -1,4 +1,4 @@
-/* Site styles. Values come from design tokens (src/design/tokens.css, generated). Intent: SPEC-001, SPEC-004.
+/* Site styles. Values come from design tokens (pj-design-system/tokens.css). Intent: SPEC-001, SPEC-004.
    Type sizes are --pj-font-size-* role tokens (ratio 1.2); headings use the display (serif) family. */
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--pj-color-surface-page);color:var(--pj-color-text-default);font-family:var(--pj-font-family-text);font-size:var(--pj-font-size-body);line-height:var(--pj-font-line-height-body)}
