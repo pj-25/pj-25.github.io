@@ -20,7 +20,7 @@ ol.timeline{list-style:none;padding:0;margin:0;border-left:2px solid var(--pj-co
 ol.timeline li{position:relative;padding:0 0 1.6rem var(--pj-space-5)}ol.timeline li::before{content:"";position:absolute;left:-7px;top:.55em;width:12px;height:12px;border-radius:50%;background:var(--pj-color-surface-page);border:2px solid var(--pj-color-accent-default)}
 .timeline .entry-title{margin:.15em 0 .2em;font-size:var(--pj-font-size-h3)}.timeline .entry-detail{margin:.2em 0 .4em}
 .links{display:flex;flex-wrap:wrap;gap:var(--pj-space-1) .9rem;font-size:var(--pj-font-size-small)}
-table{border-collapse:collapse;width:100%;font-size:var(--pj-font-size-small);display:block;overflow-x:auto}th,td{border-bottom:1px solid var(--pj-color-border-default);padding:.45rem var(--pj-space-2);text-align:left;vertical-align:top}
+table{border-collapse:collapse;width:100%;font-size:var(--pj-font-size-small)}.table-scroll{overflow-x:auto}th,td{border-bottom:1px solid var(--pj-color-border-default);padding:.45rem var(--pj-space-2);text-align:left;vertical-align:top}
 code{font-family:var(--pj-font-family-mono);font-size:var(--pj-font-size-small)}footer.site{border-top:1px solid var(--pj-color-border-default);color:var(--pj-color-text-muted);font-size:var(--pj-font-size-small);padding:var(--pj-space-6) 0}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 /* Narrow screens: the journey's evidence mark takes its own line on every entry (consistent edges, no orphaned separator). */

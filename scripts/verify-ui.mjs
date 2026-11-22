@@ -28,7 +28,7 @@ const server = createServer((req, res) => {
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const origin = `http://127.0.0.1:${server.address().port}`;
 
-const report = { routes, axe: [], keyboard: [], scripts: 0, cssGzipBytes: 0, shots: 0, shotDiffs: [], cls: [], hosts: {}, requests: [], fonts: [] };
+const report = { routes, axe: [], reflow: [], keyboard: [], scripts: 0, cssGzipBytes: 0, shots: 0, shotDiffs: [], cls: [], hosts: {}, requests: [], fonts: [] };
 const CLS_MAX = 0.05;
 report.scripts = files.filter((f) => f.endsWith('.html')).reduce((n, f) => n + (readFileSync(f, 'utf8').match(/<script\b/g) ?? []).length, 0);
 // CSS budget (ENG-4): per page, inline <style> blocks + linked .css files, gzipped; report the largest page.
@@ -59,11 +59,15 @@ try {
           report.shots++;
           if (base) { const b = join(base, name); if (!existsSync(b) || !readFileSync(b).equals(buf)) report.shotDiffs.push(name); }
         }
+        // axe at every width: overflow-dependent rules (e.g. scrollable-region-focusable) only fire on narrow screens.
+        await page.addScriptTag({ content: axeSource });
+        const res = await page.evaluate(async () => (await window.axe.run(document, { resultTypes: ['violations'] })).violations
+          .map((v) => ({ id: v.id, impact: v.impact, nodes: v.nodes.length })));
+        report.axe.push({ route: `${r} @${width}`, scheme, violations: res });
+        // A11Y-6 reflow: the page itself must never scroll horizontally.
+        const over = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+        if (over > 0) report.reflow.push(`${r} @${width} ${scheme}: +${over}px`);
         if (width === 1280) {
-          await page.addScriptTag({ content: axeSource });
-          const res = await page.evaluate(async () => (await window.axe.run(document, { resultTypes: ['violations'] })).violations
-            .map((v) => ({ id: v.id, impact: v.impact, nodes: v.nodes.length })));
-          report.axe.push({ route: r, scheme, violations: res });
           if (scheme === 'light') {
             // Keyboard: first Tab target, skip-link activation, focus ring on every focusable element.
             await page.goto(origin + r, { waitUntil: 'load' });
@@ -93,6 +97,7 @@ const serious = report.axe.flatMap((a) => a.violations.filter((v) => ['serious',
 const summary = {
   routes: routes.length, shots: report.shots, shotDiffs: report.shotDiffs,
   axeSeriousOrCritical: serious, axeAll: [...new Set(report.axe.flatMap((a) => a.violations.map((v) => `${v.id}:${v.impact}`)))],
+  horizontalOverflow: report.reflow,
   skipLinkFirstOnAllRoutes: report.keyboard.every((k) => k.firstTab.href === '#content'),
   skipLinkLandsOnContent: report.keyboard.every((k) => k.skipLands === 'content'),
   elementsWithoutFocusRing: report.keyboard.reduce((n, k) => n + k.withoutRing.length, 0),
