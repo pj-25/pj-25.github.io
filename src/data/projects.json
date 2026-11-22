@@ -14,7 +14,7 @@
     "year": "2022",
     "summary": "A browser-based 3D scene editor in three.js: primitives, lights, cameras, transform tools, OBJ import/export and a procedural particle galaxy. Part of the graphicsAI team project.",
     "shows": "Real-time graphics architecture (property-controller pattern), teamwork via PRs, CI deploy. The project's AI image-segmentation service was built by teammate mkjodhani.",
-    "href": "https://github.com/pj-25/graphicsAI-3D-Editor",
+    "href": "/projects/graphicsai-editor/",
     "live": "https://pj-25.github.io/graphicsAI-3D-Editor/dist/",
     "featured": true
   },
