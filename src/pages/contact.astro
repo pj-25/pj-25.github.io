@@ -1,7 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
+// The email lives in src/data/contact.json, written by the site owner. That file is optional.
+const files = import.meta.glob('../data/contact.json', { eager: true });
+const email = Object.values(files)[0]?.default?.email;
+const links = [
+  ...(email ? [['Email', `mailto:${email}`, email]] : []),
+  ['LinkedIn', 'https://www.linkedin.com/in/pj25', 'linkedin.com/in/pj25'],
+  ['GitHub', 'https://github.com/pj-25', 'github.com/pj-25'],
+  ['HackerRank', 'https://www.hackerrank.com/profile/joshiprashant_j1', 'hackerrank.com/profile/joshiprashant_j1'],
+];
 ---
-<Base title="Contact">
+<Base title="Contact" description="How to reach Prashant Joshi.">
   <h1>Contact</h1>
-  <p class="links"><a href="https://github.com/pj-25">GitHub · pj-25</a><!-- TODO(user): LinkedIn URL and a public contact email --></p>
+  <p class="lede">I'm happy to talk about engineering, agentic systems, or building something together.</p>
+  <table>
+    <tbody>{links.map(([k, h, t]) => <tr><th scope="row">{k}</th><td><a href={h} rel="me">{t}</a></td></tr>)}</tbody>
+  </table>
 </Base>
