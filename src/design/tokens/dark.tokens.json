@@ -32,6 +32,20 @@
         "$type": "color",
         "$value": "{ref.color.teal.300}"
       }
+    },
+    "status": {
+      "success": {
+        "fg": {
+          "$type": "color",
+          "$value": "{ref.color.moss.300}"
+        }
+      },
+      "info": {
+        "fg": {
+          "$type": "color",
+          "$value": "{ref.color.slate.300}"
+        }
+      }
     }
   }
 }

@@ -8,6 +8,12 @@
   --pj-color-border-default: #e3e0d8;
   --pj-color-accent-default: #0b6e6e;
   --pj-color-focus-ring: #0b6e6e;
+  --pj-color-status-success-fg: #3b6a47;
+  --pj-color-status-info-fg: #3f5f8c;
+  --pj-color-status-neutral-fg: #5f6368;
+  --pj-color-evidence-verified: #3b6a47;
+  --pj-color-evidence-in-progress: #3f5f8c;
+  --pj-color-evidence-described: #5f6368;
   --pj-font-family-text: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --pj-font-family-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
   --pj-space-1: 0.25rem;
@@ -44,6 +50,12 @@
     --pj-color-border-default: #2a2c2e;
     --pj-color-accent-default: #4fc1c1;
     --pj-color-focus-ring: #4fc1c1;
+    --pj-color-status-success-fg: #8cc09a;
+    --pj-color-status-info-fg: #9db8e0;
+    --pj-color-status-neutral-fg: #a0a4a8;
+    --pj-color-evidence-verified: #8cc09a;
+    --pj-color-evidence-in-progress: #9db8e0;
+    --pj-color-evidence-described: #a0a4a8;
   }
 }
 :root[data-theme="dark"] {
@@ -55,6 +67,12 @@
   --pj-color-border-default: #2a2c2e;
   --pj-color-accent-default: #4fc1c1;
   --pj-color-focus-ring: #4fc1c1;
+  --pj-color-status-success-fg: #8cc09a;
+  --pj-color-status-info-fg: #9db8e0;
+  --pj-color-status-neutral-fg: #a0a4a8;
+  --pj-color-evidence-verified: #8cc09a;
+  --pj-color-evidence-in-progress: #9db8e0;
+  --pj-color-evidence-described: #a0a4a8;
 }
 @media (prefers-reduced-motion: reduce) {
   :root {
