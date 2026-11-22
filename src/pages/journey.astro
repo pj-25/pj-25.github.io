@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import journey from '../data/journey.json';
+import EvidenceMark from '../components/EvidenceMark.astro';
 ---
 <Base title="Journey" description="From Turbo C chess to agentic systems: each step links to the work.">
   <h1>Journey</h1>
@@ -8,8 +9,8 @@ import journey from '../data/journey.json';
   <ol class="timeline">
     {journey.map(j => (
       <li>
-        <span class="meta">{j.year} · {j.chapter}</span>
-        <h3 class="entry-title">{j.title}</h3>
+        <span class="meta">{j.year} · {j.chapter} · <EvidenceMark {...j.evidence} /></span>
+        <h2 class="entry-title">{j.title}</h2>
         <p class="entry-detail">{j.detail}</p>
         {j.links.length > 0 && <p class="links">{j.links.map(l => <a href={l.href}>{l.label}</a>)}</p>}
       </li>

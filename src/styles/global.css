@@ -14,10 +14,10 @@ nav{display:flex;flex-wrap:wrap;gap:var(--pj-space-1) var(--pj-space-4)}nav a{co
 main{padding:var(--pj-space-10) 0 var(--pj-space-16)}h1{font-size:2rem;line-height:1.2;margin:.2em 0 .6em}h2{font-size:1.25rem;margin:2.2em 0 .6em}
 .lede{font-size:1.15rem;color:var(--pj-color-text-muted)}.eyebrow{font-family:var(--pj-font-family-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--pj-color-accent-default)}
 .cards{display:grid;gap:var(--pj-space-4)}.card{background:var(--pj-color-surface-raised);border:1px solid var(--pj-color-border-default);border-radius:var(--pj-radius-card);padding:var(--pj-space-4) 1.1rem}
-.card h3{margin:.1em 0 .3em;font-size:1.05rem}.card p{margin:.3em 0}.meta{font-family:var(--pj-font-family-mono);font-size:.8rem;color:var(--pj-color-text-muted)}
+.card h3,.card .card-title{margin:.1em 0 .3em;font-size:1.05rem}.card p{margin:.3em 0}.meta{font-family:var(--pj-font-family-mono);font-size:.8rem;color:var(--pj-color-text-muted)}
 ol.timeline{list-style:none;padding:0;margin:0;border-left:2px solid var(--pj-color-border-default)}
 ol.timeline li{position:relative;padding:0 0 1.6rem var(--pj-space-5)}ol.timeline li::before{content:"";position:absolute;left:-7px;top:.55em;width:12px;height:12px;border-radius:50%;background:var(--pj-color-surface-page);border:2px solid var(--pj-color-accent-default)}
-.timeline .entry-title{margin:.15em 0 .2em}.timeline .entry-detail{margin:.2em 0 .4em}
+.timeline .entry-title{margin:.15em 0 .2em;font-size:1.17em}.timeline .entry-detail{margin:.2em 0 .4em}
 .links{display:flex;flex-wrap:wrap;gap:var(--pj-space-1) .9rem;font-size:.92rem}
 table{border-collapse:collapse;width:100%;font-size:.93rem;display:block;overflow-x:auto}th,td{border-bottom:1px solid var(--pj-color-border-default);padding:.45rem var(--pj-space-2);text-align:left;vertical-align:top}
 code{font-family:var(--pj-font-family-mono);font-size:.88em}footer.site{border-top:1px solid var(--pj-color-border-default);color:var(--pj-color-text-muted);font-size:.85rem;padding:var(--pj-space-6) 0}

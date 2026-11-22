@@ -9,8 +9,9 @@
     "tokens": "node src/design/build-tokens.mjs",
     "check": "node src/design/build-tokens.mjs --check",
     "prebuild": "node src/design/build-tokens.mjs --check",
-    "test": "node --test src/design/build-tokens.test.mjs",
-    "verify:ui": "node scripts/verify-ui.mjs"
+    "test": "node --test src/design/build-tokens.test.mjs src/components/evidence.test.mjs",
+    "verify:ui": "node scripts/verify-ui.mjs",
+    "audit:evidence": "node scripts/audit-evidence.mjs"
   },
   "dependencies": {
     "astro": "7.4.11"

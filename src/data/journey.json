@@ -4,7 +4,11 @@
     "chapter": "Curiosity",
     "title": "Chess, snake and data structures in C/C++",
     "detail": "Turbo C era games and a threaded binary tree, kept as college files.",
-    "links": []
+    "links": [],
+    "evidence": {
+      "kind": "described",
+      "label": "Described, not shown"
+    }
   },
   {
     "year": "2020",
@@ -16,7 +20,12 @@
         "label": "InformationSecurity",
         "href": "https://github.com/pj-25/InformationSecurity"
       }
-    ]
+    ],
+    "evidence": {
+      "kind": "verified",
+      "href": "https://github.com/pj-25/InformationSecurity",
+      "label": "Source"
+    }
   },
   {
     "year": "2021",
@@ -36,7 +45,12 @@
         "label": "Gameholic",
         "href": "https://github.com/pj-25/Gameholic"
       }
-    ]
+    ],
+    "evidence": {
+      "kind": "verified",
+      "href": "https://github.com/pj-25/JavaServerClientAPI",
+      "label": "Source"
+    }
   },
   {
     "year": "2021–22",
@@ -52,7 +66,12 @@
         "label": "threepp",
         "href": "https://www.npmjs.com/package/threepp"
       }
-    ]
+    ],
+    "evidence": {
+      "kind": "verified",
+      "href": "https://github.com/pj-25/graphicsAI-3D-Editor",
+      "label": "Source"
+    }
   },
   {
     "year": "2022 → now",
@@ -64,7 +83,11 @@
         "label": "Experience",
         "href": "/experience/"
       }
-    ]
+    ],
+    "evidence": {
+      "kind": "described",
+      "label": "Described, not shown"
+    }
   },
   {
     "year": "2026",
@@ -84,6 +107,11 @@
         "label": "Now",
         "href": "/now/"
       }
-    ]
+    ],
+    "evidence": {
+      "kind": "verified",
+      "href": "https://github.com/pj-25/the-odyssey-experience",
+      "label": "Source"
+    }
   }
 ]

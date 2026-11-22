@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import projects from '../data/projects.json';
+import EvidenceMark from '../components/EvidenceMark.astro';
 ---
 <Base>
   <p class="eyebrow">Full-stack product engineer · independent builder</p>
@@ -10,7 +11,7 @@ import projects from '../data/projects.json';
   <div class="cards">
     {projects.filter(p => p.featured).map(p => (
       <article class="card">
-        <span class="meta">{p.year}</span>
+        <span class="meta">{p.year} · <EvidenceMark {...p.evidence} /></span>
         <h3><a href={p.href}>{p.name}</a></h3>
         <p>{p.summary}</p>
         {p.shows && <p class="meta">Shows: {p.shows}</p>}

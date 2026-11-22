@@ -6,7 +6,11 @@
     "summary": "A harness for coding agents on one laptop: guard and trace hooks, a bounded DAG runner with typed failures and resume, and verification agents. Built on Claude Code.",
     "shows": "Systems design for AI-native engineering; safety and observability; 36 tests.",
     "href": "/projects/agentic-os/",
-    "featured": true
+    "featured": true,
+    "evidence": {
+      "kind": "described",
+      "label": "Described, not shown"
+    }
   },
   {
     "slug": "jsc-gameholic",
@@ -15,7 +19,12 @@
     "summary": "An event-driven TCP library for Java and the multiplayer game platform built as its first user.",
     "shows": "API design driven by a real consumer; honest trade-offs; tests added in 2026.",
     "href": "/projects/jsc-gameholic/",
-    "featured": true
+    "featured": true,
+    "evidence": {
+      "kind": "verified",
+      "href": "https://github.com/pj-25/JavaServerClientAPI",
+      "label": "Source"
+    }
   },
   {
     "slug": "graphicsai",
@@ -25,7 +34,12 @@
     "shows": "Real-time graphics architecture (property-controller pattern), teamwork via PRs, CI deploy. The project's AI image-segmentation service was built by teammate mkjodhani.",
     "href": "/projects/graphicsai-editor/",
     "live": "https://pj-25.github.io/graphicsAI-3D-Editor/dist/",
-    "featured": true
+    "featured": true,
+    "evidence": {
+      "kind": "verified",
+      "href": "https://github.com/pj-25/graphicsAI-3D-Editor",
+      "label": "Source"
+    }
   },
   {
     "slug": "odyssey",
@@ -35,7 +49,12 @@
     "shows": "Simulation modelling, tested TypeScript, AI-assisted workflow.",
     "href": "https://github.com/pj-25/the-odyssey-experience",
     "live": "https://the-odyssey-experience.vercel.app",
-    "featured": true
+    "featured": true,
+    "evidence": {
+      "kind": "verified",
+      "href": "https://github.com/pj-25/the-odyssey-experience",
+      "label": "Source"
+    }
   },
   {
     "slug": "threepp",
@@ -43,6 +62,11 @@
     "year": "2022",
     "summary": "A small npm package extending three.js with dat.gui scene controls.",
     "href": "https://www.npmjs.com/package/threepp",
-    "featured": false
+    "featured": false,
+    "evidence": {
+      "kind": "verified",
+      "href": "https://www.npmjs.com/package/threepp",
+      "label": "Source"
+    }
   }
 ]

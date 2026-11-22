@@ -1,0 +1,22 @@
+---
+// Evidence mark (SPEC-002, VIS-11): shape + text + subtle colour. Never colour alone (A11Y-5).
+import { evidenceModel } from './evidence.mjs';
+const { kind, href, label } = Astro.props;
+const m = evidenceModel({ kind, href, label });
+---
+<span class={`evidence evidence--${m.kind}`}>
+  <svg class="evidence-shape" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+    {m.kind === 'verified' && <><circle cx="6" cy="6" r="6" fill="currentColor" /><path d="M3.4 6.2l1.8 1.8 3.4-3.8" fill="none" stroke="var(--pj-color-surface-page)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></>}
+    {m.kind === 'described' && <circle cx="6" cy="6" r="5.2" fill="none" stroke="currentColor" stroke-width="1.6" />}
+    {m.kind === 'in-progress' && <><circle cx="6" cy="6" r="5.2" fill="none" stroke="currentColor" stroke-width="1.6" /><path d="M6 0.8a5.2 5.2 0 0 1 0 10.4z" fill="currentColor" /></>}
+  </svg>
+  {m.kind === 'verified' ? <a href={m.href} rel="noopener">{m.text}</a> : <span>{m.text}</span>}
+</span>
+<style>
+  .evidence { display: inline-flex; align-items: center; gap: var(--pj-space-1); font-family: var(--pj-font-family-mono); font-size: .8rem; line-height: inherit; vertical-align: baseline; }
+  .evidence-shape { flex: none; }
+  .evidence a { color: inherit; text-underline-offset: 3px; }
+  .evidence--verified { color: var(--pj-color-evidence-verified); }
+  .evidence--described { color: var(--pj-color-evidence-described); }
+  .evidence--in-progress { color: var(--pj-color-evidence-in-progress); }
+</style>
